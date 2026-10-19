@@ -1,0 +1,72 @@
+{
+  "lesson": "C02 Lesson01",
+  "date": "2026-10-19",
+  "timezone": "Asia/Shanghai",
+  "method": "Restart a fresh Jupyter kernel with the existing fde interpreter; execute every cell in order using nbclient with allow_errors=False.",
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.14.0",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "device": "cpu"
+  },
+  "notebook": "C02/lesson01.ipynb",
+  "source_notebook_sha256_before_edit": "be5edea7fad7f071e814bdd784937d27a2c61acc58d8a9c0763d4f27b2900c5a",
+  "source_cells_before_edit": 17,
+  "total_cells": 30,
+  "executed_code_cells": 13,
+  "unhandled_cell_errors": 0,
+  "checks_passed": 15,
+  "checks_total": 15,
+  "checks": {
+    "main_dimensions": true,
+    "input_ids": true,
+    "input_shape": true,
+    "embedding_shape": true,
+    "output_shape": true,
+    "valid_mask": true,
+    "lookup": true,
+    "pad_vectors_zero": true,
+    "same_token_different_positions": true,
+    "unknown_id_and_validity": true,
+    "shape_exercise": true,
+    "case_a_expected_error": true,
+    "case_a_fixed": true,
+    "case_b_expected_error": true,
+    "case_b_fixed": true
+  },
+  "expected_errors_caught": {
+    "A": "RuntimeError Expected tensor for argument #1 'indices' to have one of the following scalar types: Long, Int; but got torch.FloatTensor instead (while checking arguments for embedding)",
+    "B": "IndexError index out of range in self"
+  },
+  "main_shapes": {
+    "input_ids": [
+      3,
+      4
+    ],
+    "embedding_weight": [
+      9,
+      6
+    ],
+    "output": [
+      3,
+      4,
+      6
+    ]
+  },
+  "expected_error_fixed_shapes": {
+    "A": [
+      1,
+      2,
+      4
+    ],
+    "B": [
+      1,
+      1,
+      4
+    ]
+  },
+  "training_performed": false,
+  "paid_model_api_calls": 0,
+  "completion_evidence": "User confirmed homework completion; assistant inspected the saved notebook and added explicitly labeled reference cells before executing. The run is not independent evidence of learner mastery."
+}
