@@ -1,0 +1,86 @@
+{
+  "lesson": "C02 Lesson02",
+  "date": "2026-10-20",
+  "timezone": "Asia/Shanghai",
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.14.0",
+    "device": "cpu"
+  },
+  "source_file": "C02/lesson02.py",
+  "source_sha256_before_edit": "47a25ac0cd12bd3df79f915c638c3440667a255ced4f845872fdd93e7f42ad64",
+  "source_sha256_after_edit": "681062282c5c4119b7c9ff473a9de0f9645063c1f987f6ea6427032fbf0ef7d6",
+  "original_teacher_example_execution": "passed before edits",
+  "script_checks_passed": 15,
+  "script_checks_total": 15,
+  "script_checks": {
+    "teacher_output_shape": true,
+    "teacher_weights_normalized": true,
+    "teacher_forbidden_zero": true,
+    "teacher_output_finite": true,
+    "manual_second_row": true,
+    "homework_input_ids": true,
+    "homework_feature_shapes": true,
+    "homework_output_shape": true,
+    "homework_weights_normalized": true,
+    "homework_forbidden_zero": true,
+    "homework_output_finite": true,
+    "homework_pad_output_zero": true,
+    "zero_fill_error_reproduced": true,
+    "wrong_axis_error_reproduced": true,
+    "all_pad_error_and_guard": true
+  },
+  "independent_reference": "torch.nn.functional.scaled_dot_product_attention with a single head, the same allowed mask, and dropout_p=0.0",
+  "reference_comparisons": {
+    "teacher": true,
+    "homework": true
+  },
+  "reference_absolute_tolerance": 1e-06,
+  "manual_second_row_weights": [
+    0.3302384614944458,
+    0.6697615385055542,
+    0.0
+  ],
+  "manual_second_row_output": [
+    0.6604769229888916,
+    2.679046154022217
+  ],
+  "homework_input_ids": [
+    [
+      2,
+      3,
+      4
+    ],
+    [
+      5,
+      6,
+      0
+    ],
+    [
+      2,
+      3,
+      7
+    ]
+  ],
+  "homework_output_shape": [
+    3,
+    3,
+    4
+  ],
+  "error_experiments": {
+    "zero_fill_forbidden_max": 0.27639058232307434,
+    "wrong_axis_all_finite": false,
+    "all_pad_direct_softmax_all_nan": true,
+    "all_pad_guard_triggered": true
+  },
+  "expected_nan_outputs": "Only intentional wrong-axis and all-PAD demonstrations produce NaN; normal flows are finite. The all-PAD guard raises and catches the expected ValueError before normal Softmax.",
+  "completion_evidence": "User confirmed completion. The saved file contained the teacher example. Assistant preserved it and appended labeled reference exercises; execution is not independent evidence of learner mastery.",
+  "training_performed": false,
+  "paid_model_api_calls": 0,
+  "publication_request": {
+    "date": "2026-10-20",
+    "user_authorized": true,
+    "repository": "https://github.com/15016623369a-spe/transformer-learning",
+    "scope": "Lesson02 script, notes, homework answers, verification record, handoff, and README"
+  }
+}

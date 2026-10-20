@@ -1,6 +1,6 @@
 # Transformer Learning
 
-Transformer 基础学习与 PyTorch 实验。课程使用 Jupyter Notebook，沿用 Conda `fde` 环境，在 CPU 上观察模型输入与张量形状。
+Transformer 基础学习与 PyTorch 实验。课程使用 Jupyter Notebook 与 Python 脚本，沿用 Conda `fde` 环境，在 CPU 上观察模型输入与张量形状。
 
 本仓库专门保存 Transformer 课程。此前 C01 的服务与后端实践仍保留在 [agent-learn](https://github.com/15016623369a-spe/agent-learn)，不在两个仓库之间重复搬迁。
 
@@ -9,7 +9,7 @@ Transformer 基础学习与 PyTorch 实验。课程使用 Jupyter Notebook，沿
 | 课程 | 状态 | 实验与记录 |
 |---|---|---|
 | C02 Lesson01：Token、Token ID、Embedding 与模型输入 | 已完成：用户确认作业完成；Notebook 经本次整理后从头执行验证 | [Notebook](C02/lesson01.ipynb) · [知识点](docs/C02-Lesson01-notes.md) · [作业与第四题解释](docs/C02-Lesson01-homework.md) · [交接](docs/C02-Lesson01-handoff.md) |
-| C02 Lesson02：位置机制、Q/K/V、Attention 分数、缩放、Softmax、Mask | 待开始 | 上一课完成后接续，尚未授课或验收 |
+| C02 Lesson02：位置机制、Q/K/V、Attention 分数、缩放、Softmax、Mask | 已完成：用户确认；脚本经检查补充并运行验证 | [脚本](C02/lesson02.py) · [知识点](docs/C02-Lesson02-notes.md) · [作业答案](docs/C02-Lesson02-homework.md) · [交接](docs/C02-Lesson02-handoff.md) |
 
 “用户确认完成”与“助手运行代码验证”分别记录，不将整理补充的代码当成用户独立实现的证据。
 
@@ -53,11 +53,26 @@ Notebook 包含用户原有学习注释、扩展后的查表实践，以及本�
 ```text
 C02/
   lesson01.ipynb
+  lesson02.py
 docs/
   C02-Lesson01-notes.md
   C02-Lesson01-homework.md
   C02-Lesson01-handoff.md
   C02-Lesson01-verification.json
+  C02-Lesson02-notes.md
+  C02-Lesson02-homework.md
+  C02-Lesson02-handoff.md
+  C02-Lesson02-verification.json
 ```
 
 不上传密钥、`.env`、虚拟环境、Notebook 检查点和编辑器配置。后续课程继续先授课、练习与复核；用户明确要求同步时再发布。
+
+## Lesson02 本地运行
+
+```bash
+conda activate fde
+cd /Users/jace/transformer-learning
+python C02/lesson02.py
+```
+
+本课包含单头注意力、作业参考补充和有意触发的错误实验。正常流程通过 15 项检查，并额外与 PyTorch 原生 Attention 做两组对照；[验证记录](docs/C02-Lesson02-verification.json) 区分正常结果与预期错误。本课代码、知识点、作业答案与交接集中保存在本仓库。
