@@ -1,0 +1,116 @@
+{
+  "lesson": "C02 Lesson03",
+  "date": "2026-10-22",
+  "timezone": "Asia/Shanghai",
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.14.0",
+    "device": "cpu"
+  },
+  "original_execution": {
+    "C02/lesson03.py": "passed before edits",
+    "C02/exercise/lesson03exercise.py": "passed before edits"
+  },
+  "source_sha256_before": {
+    "C02/lesson03.py": "cdd006af6541905667f6d334f39ddee614083420279023a034ccb37f469f920a",
+    "C02/exercise/lesson03exercise.py": "cd758d142a4fdb6131ad99e04027e5c259b8c5939be4bac3f4fd123b8a63ac71"
+  },
+  "source_sha256_after": {
+    "C02/lesson03.py": "cdd006af6541905667f6d334f39ddee614083420279023a034ccb37f469f920a",
+    "C02/exercise/lesson03exercise.py": "d35d46de27aef0d58b9defeb60969721d1386decf098432a15f4da3ac5fdb204"
+  },
+  "teacher_core_unchanged": true,
+  "teacher_checks": {
+    "output_shape": true,
+    "row_sums_one": true,
+    "forbidden_weights_zero": true,
+    "pad_query_output_zero": true,
+    "output_finite": true
+  },
+  "exercise_checks": {
+    "3": {
+      "output_shape": true,
+      "row_sums_one": true,
+      "forbidden_weights_zero": true,
+      "pad_query_output_zero": true,
+      "weights_finite": true,
+      "output_finite": true
+    },
+    "4": {
+      "output_shape": true,
+      "row_sums_one": true,
+      "forbidden_weights_zero": true,
+      "pad_query_output_zero": true,
+      "weights_finite": true,
+      "output_finite": true
+    }
+  },
+  "fourth_exercise_checks": {
+    "invalid_head_config_rejected": true,
+    "wrong_merge_shape_same": true,
+    "wrong_merge_values_differ": true,
+    "correct_merge_restores_values": true
+  },
+  "native_reference": "torch.nn.MultiheadAttention with identical Q/K/V and output projection weights; dropout=0, bias=False, batch_first=True, average_attn_weights=False",
+  "native_reference_comparisons": {
+    "teacher_H2": {
+      "output_matches": true,
+      "per_head_weights_match": true,
+      "output_shape": [
+        2,
+        4,
+        8
+      ],
+      "weights_shape": [
+        2,
+        2,
+        4,
+        4
+      ]
+    },
+    "exercise_H3": {
+      "output_matches": true,
+      "per_head_weights_match": true,
+      "output_shape": [
+        3,
+        3,
+        12
+      ],
+      "weights_shape": [
+        3,
+        3,
+        3,
+        3
+      ]
+    },
+    "exercise_H4": {
+      "output_matches": true,
+      "per_head_weights_match": true,
+      "output_shape": [
+        3,
+        3,
+        12
+      ],
+      "weights_shape": [
+        3,
+        4,
+        3,
+        3
+      ]
+    }
+  },
+  "comparison_tolerance": {
+    "atol": 1e-06,
+    "rtol": 1e-05
+  },
+  "actual_projection_split_merge_roundtrip": true,
+  "completion_evidence": "The user requested homework answers on 2026-10-21, accepted as private completion per the teaching agreement. Saved classroom and exercise scripts were inspected and executed. Fourth-exercise code and documentation were added as labeled assistant reference material; this is not independent proof of learner mastery.",
+  "publication_request": {
+    "date": "2026-10-22",
+    "repository": "https://github.com/15016623369a-spe/transformer-learning",
+    "user_authorized": true
+  },
+  "training_performed": false,
+  "paid_model_api_calls": 0,
+  "dependencies_changed": false
+}

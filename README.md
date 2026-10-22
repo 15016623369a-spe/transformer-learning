@@ -10,6 +10,8 @@ Transformer 基础学习与 PyTorch 实验。课程使用 Jupyter Notebook 与 P
 |---|---|---|
 | C02 Lesson01：Token、Token ID、Embedding 与模型输入 | 已完成：用户确认作业完成；Notebook 经本次整理后从头执行验证 | [Notebook](C02/lesson01.ipynb) · [知识点](docs/C02-Lesson01-notes.md) · [作业与第四题解释](docs/C02-Lesson01-homework.md) · [交接](docs/C02-Lesson01-handoff.md) |
 | C02 Lesson02：位置机制、Q/K/V、Attention 分数、缩放、Softmax、Mask | 已完成：用户确认；脚本经检查补充并运行验证 | [脚本](C02/lesson02.py) · [知识点](docs/C02-Lesson02-notes.md) · [作业答案](docs/C02-Lesson02-homework.md) · [交接](docs/C02-Lesson02-handoff.md) |
+| C02 Lesson03：多头注意力、拆分与合并、输出投影 | 已完成：用户确认；课堂与练习经检查验证 | [课堂](C02/lesson03.py) · [练习](C02/exercise/lesson03exercise.py) · [重点讲义](docs/C02-Lesson03-notes.md) · [作业答案](docs/C02-Lesson03-homework.md) · [交接](docs/C02-Lesson03-handoff.md) |
+| C02 Lesson04：FFN、残差、LayerNorm 与 Transformer Block | 已授课，作业待完成确认 | 承接 Lesson04 作业与复核 |
 
 “用户确认完成”与“助手运行代码验证”分别记录，不将整理补充的代码当成用户独立实现的证据。
 
@@ -54,6 +56,9 @@ Notebook 包含用户原有学习注释、扩展后的查表实践，以及本�
 C02/
   lesson01.ipynb
   lesson02.py
+  lesson03.py
+  exercise/
+    lesson03exercise.py
 docs/
   C02-Lesson01-notes.md
   C02-Lesson01-homework.md
@@ -63,6 +68,10 @@ docs/
   C02-Lesson02-homework.md
   C02-Lesson02-handoff.md
   C02-Lesson02-verification.json
+  C02-Lesson03-notes.md
+  C02-Lesson03-homework.md
+  C02-Lesson03-handoff.md
+  C02-Lesson03-verification.json
 ```
 
 不上传密钥、`.env`、虚拟环境、Notebook 检查点和编辑器配置。后续课程继续先授课、练习与复核；用户明确要求同步时再发布。
@@ -76,3 +85,17 @@ python C02/lesson02.py
 ```
 
 本课包含单头注意力、作业参考补充和有意触发的错误实验。正常流程通过 15 项检查，并额外与 PyTorch 原生 Attention 做两组对照；[验证记录](docs/C02-Lesson02-verification.json) 区分正常结果与预期错误。本课代码、知识点、作业答案与交接集中保存在本仓库。
+
+
+## Lesson03 运行与重点
+
+```bash
+conda activate fde
+cd /Users/jace/transformer-learning
+python C02/lesson03.py
+python C02/exercise/lesson03exercise.py
+```
+
+优先复习 [Lesson03 重点讲义](docs/C02-Lesson03-notes.md) 中的五个重点：特征维等宽拆分、先投影再拆头、拆分与合并的数值顺序、每头缩放与 Softmax 轴、Mask 的 head 广播维。讲义包含完整教师代码和易错点。
+
+原有课堂与练习均执行通过；练习保留学习注释，追加明确标识的第四题参考补充。三组配置（课堂 H=2、练习 H=3 和 H=4）的输出及逐头权重分别与同参数 PyTorch 原生多头注意力对照一致，详见 [验证记录](docs/C02-Lesson03-verification.json)。
