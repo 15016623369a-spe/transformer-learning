@@ -1,0 +1,111 @@
+{
+  "lesson": "C02 Lesson05",
+  "date": "2026-10-22",
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.14.0",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "device": "cpu"
+  },
+  "saved_classroom_file": "C02/lesson05.py",
+  "classroom_unchanged": true,
+  "classroom_sha256": "544ecad79f07af571728e351135f733d5708a492177b80f14e93992577906804",
+  "assistant_reference_file": "C02/exercise/lesson05exercise.py",
+  "assistant_reference_sha256": "557df2f20686cfd101ae1b0012e23fcccc43a28b8f42960b305f663dcafff064",
+  "original_classroom_execution": "passed before supplements",
+  "teacher_deltas": {
+    "causal_delta": 0.0,
+    "open_delta": 0.08764767646789551,
+    "pad_delta": 0.0,
+    "unmasked_delta": 0.14241230487823486
+  },
+  "homework_shapes": {
+    "input_ids": [
+      3,
+      4
+    ],
+    "h": [
+      3,
+      4,
+      12
+    ],
+    "query": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "weights": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "allowed": [
+      3,
+      1,
+      4,
+      4
+    ],
+    "after_attn": [
+      3,
+      4,
+      12
+    ],
+    "ff_hidden": [
+      3,
+      4,
+      24
+    ],
+    "output": [
+      3,
+      4,
+      12
+    ]
+  },
+  "homework_checks": {
+    "output_shape": true,
+    "ffn_hidden_shape": true,
+    "weights_rows_sum_one": true,
+    "forbidden_weights_zero": true,
+    "pad_output_zero": true,
+    "normal_values_finite": true
+  },
+  "homework_deltas": {
+    "causal_prefix_max_delta": 0.0,
+    "without_causal_prefix_max_delta": 0.08238822221755981,
+    "pad_mask_valid_output_max_delta": 0.0,
+    "without_pad_mask_valid_output_max_delta": 0.1807783842086792
+  },
+  "debug_checks": {
+    "A_alias_is_same_object": true,
+    "A_original_baseline_was_changed": true,
+    "A_clone_fix_preserves_baseline": true,
+    "B_expected_error": "存在没有可读 Key 的 Query",
+    "B_correct_mask_fix_passed": true,
+    "independent_cases_preserve_original_h": true
+  },
+  "native_reference_comparisons": {
+    "lesson05_teacher": {
+      "output_matches": true,
+      "shape": [
+        2,
+        4,
+        8
+      ]
+    },
+    "lesson05_homework": {
+      "output_matches": true,
+      "shape": [
+        3,
+        4,
+        12
+      ]
+    }
+  },
+  "scope": "User requested answers as private completion confirmation. The saved classroom example was checked without changes. Missing saved homework was added as labeled assistant reference code, not as independent mastery evidence.",
+  "training_performed": false,
+  "dependencies_changed": false,
+  "paid_model_api_calls": 0
+}

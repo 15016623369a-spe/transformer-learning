@@ -1,121 +1,76 @@
 # Transformer Learning
 
-Transformer 基础学习与 PyTorch 实验。课程使用 Jupyter Notebook 与 Python 脚本，沿用 Conda `fde` 环境，在 CPU 上观察模型输入与张量形状。
+Transformer 基础学习与 PyTorch 实验仓库，使用中文讲义、Jupyter Notebook 和 Python 脚本记录从模型输入到 Pre-Norm Block 的学习过程。
 
-本仓库专门保存 Transformer 课程。此前 C01 的服务与后端实践仍保留在 [agent-learn](https://github.com/15016623369a-spe/agent-learn)，不在两个仓库之间重复搬迁。
+**当前进度：C02 Lesson01–05 已授课并给出作业答案，2026-10-22 本地教学实验验收通过；下一步从 C03 Lesson01：真实 Tokenizer 与模型输入编码开始。C03 尚未授课或实现。**
 
-## 课程进度
+## C02 学了什么
 
-| 课程 | 状态 | 实验与记录 |
-|---|---|---|
-| C02 Lesson01：Token、Token ID、Embedding 与模型输入 | 已完成：用户确认作业完成；Notebook 经本次整理后从头执行验证 | [Notebook](C02/lesson01.ipynb) · [知识点](docs/C02-Lesson01-notes.md) · [作业与第四题解释](docs/C02-Lesson01-homework.md) · [交接](docs/C02-Lesson01-handoff.md) |
-| C02 Lesson02：位置机制、Q/K/V、Attention 分数、缩放、Softmax、Mask | 已完成：用户确认；脚本经检查补充并运行验证 | [脚本](C02/lesson02.py) · [知识点](docs/C02-Lesson02-notes.md) · [作业答案](docs/C02-Lesson02-homework.md) · [交接](docs/C02-Lesson02-handoff.md) |
-| C02 Lesson03：多头注意力、拆分与合并、输出投影 | 已完成：用户确认；课堂与练习经检查验证 | [课堂](C02/lesson03.py) · [练习](C02/exercise/lesson03exercise.py) · [重点讲义](docs/C02-Lesson03-notes.md) · [作业答案](docs/C02-Lesson03-homework.md) · [交接](docs/C02-Lesson03-handoff.md) |
-| C02 Lesson04：FFN、残差、LayerNorm 与 Transformer Block | 已授课并给出答案；课堂文件复核通过，作业参考补充已标明 | [课堂](C02/lesson04.py) · [参考练习](C02/exercise/lesson04exercise.py) · [重点讲义](docs/C02-Lesson04-notes.md) · [作业答案](docs/C02-Lesson04-homework.md) · [交接](docs/C02-Lesson04-handoff.md) |
+Token 与 Token ID → Embedding → 位置向量 → Q/K/V → 缩放点积 Attention → Padding/Causal Mask → 多头拆分与合并 → 输出投影 → FFN、残差与 LayerNorm → Pre-Norm Block → 对照实验。
 
-“用户确认完成”与“助手运行代码验证”分别记录，不将整理补充的代码当成用户独立实现的证据。
+实验使用小词表、随机初始化权重和 CPU，重点是形状与计算规则。当前没有训练语言模型、词表预测头或真实文本生成。
 
-## 运行方式
+## 课程入口
+
+| 小课 | 主题 | 状态 | 文件 |
+|---|---|---|---|
+| Lesson01 | Token、Token ID、Embedding 与输入 | 已授课、答案已给出，本轮复核通过 | [代码](C02/lesson01.ipynb) · [讲义](docs/C02-Lesson01-notes.md) · [答案](docs/C02-Lesson01-homework.md) |
+| Lesson02 | 位置、Q/K/V、Attention、Softmax 与 Mask | 已授课、答案已给出，本轮复核通过 | [代码](C02/lesson02.py) · [讲义](docs/C02-Lesson02-notes.md) · [答案](docs/C02-Lesson02-homework.md) |
+| Lesson03 | 多头注意力与输出投影 | 已授课、答案已给出，本轮复核通过 | [代码](C02/lesson03.py) · [讲义](docs/C02-Lesson03-notes.md) · [答案](docs/C02-Lesson03-homework.md) |
+| Lesson04 | FFN、残差、LayerNorm 与 Block | 已授课、答案已给出，本轮复核通过 | [代码](C02/lesson04.py) · [讲义](docs/C02-Lesson04-notes.md) · [答案](docs/C02-Lesson04-homework.md) |
+| Lesson05 | 综合实验与验收 | 已授课、答案已给出，本轮复核通过 | [代码](C02/lesson05.py) · [讲义](docs/C02-Lesson05-notes.md) · [答案](docs/C02-Lesson05-homework.md) |
+
+- [C02 模块说明与重点](C02/README.md)
+- [C02 验收与整理记录](docs/C02-acceptance.md) · [机器可读结果](docs/C02-verification.json)
+- [后续课程交接：C02 → C03 与完整主线](docs/C02-to-C03-handoff.md)
+- [Lesson05 参考练习](C02/exercise/lesson05exercise.py)
+
+## 运行与复现
+
+沿用已有 Conda fde 环境。本轮实际版本：Python 3.11.16、PyTorch 2.14.0、nbformat 5.11.1、nbclient 0.11.0。
 
 ```bash
 conda activate fde
 cd /Users/jace/transformer-learning
-python --version
-python -c "import torch; print(torch.__version__)"
+python C02/lesson05.py
+python C02/exercise/lesson05exercise.py
+python C02/verify.py --report /tmp/c02-verification.json
 ```
 
-在支持 Jupyter Notebook 的编辑器中打开 [C02/lesson01.ipynb](C02/lesson01.ipynb)，选择 `fde` 对应的 Python 解释器，再执行“重启内核并运行全部单元格”。
+本机解释器为 `/Users/jace/miniforge3/envs/fde/bin/python`。Notebook 在编辑器中选择同一个解释器，再重启内核并运行全部；显示名 fde 不代替解释器核对。
 
-本机解释器：`/Users/jace/miniforge3/envs/fde/bin/python`。Notebook 中的显示名为 `fde`，但显示名不代替实际解释器选择。
+全量复核会以当前解释器启动临时 Jupyter 内核，执行 Lesson01 的 13 个代码单元和 15 项检查，再运行 7 个 Python 学习入口并完成 10 组同参数 PyTorch 原生对照。默认不改学习文件，不下载模型，不训练，不调用付费 API。
 
-本次验证使用 Python 3.11.16、PyTorch 2.14.0，全部在 CPU 上运行；没有调用付费模型或安装、升级依赖。完整运行记录见 [验证报告](docs/C02-Lesson01-verification.json)。
-
-## Lesson01 的输入与结果
-
-本次保留用户 Notebook 中的输入顺序：
-
-```text
-我 查询 订单
-生成 订单 分析 报告
-查询 退款
-```
-
-词表大小 `V=9`，批量大小 `B=3`，补齐长度 `T=4`，表示维度 `D=6`：
-
-```text
-input_ids:        [3, 4]
-embedding.weight: [9, 6]
-x:                [3, 4, 6]
-```
-
-Notebook 包含用户原有学习注释、扩展后的查表实践，以及本次明确标识的参考补充：不同位置的相同 Token、未知 Token、shape 练习、两类预期错误及修正。
-
-## 目录
+## 文件组织
 
 ```text
 C02/
+  README.md                 # 模块知识图谱、约定与运行入口
   lesson01.ipynb
   lesson02.py
   lesson03.py
   lesson04.py
+  lesson05.py
+  verify.py                 # Notebook + 脚本 + 原生实现全量复核
   exercise/
     lesson03exercise.py
     lesson04exercise.py
+    lesson05exercise.py
 docs/
-  C02-Lesson01-notes.md
-  C02-Lesson01-homework.md
-  C02-Lesson01-handoff.md
-  C02-Lesson01-verification.json
-  C02-Lesson02-notes.md
-  C02-Lesson02-homework.md
-  C02-Lesson02-handoff.md
-  C02-Lesson02-verification.json
-  C02-Lesson03-notes.md
-  C02-Lesson03-homework.md
-  C02-Lesson03-handoff.md
-  C02-Lesson03-verification.json
-  C02-Lesson04-notes.md
-  C02-Lesson04-homework.md
-  C02-Lesson04-handoff.md
-  C02-Lesson04-verification.json
+  C02-Lesson01-...           # notes / homework / handoff / verification.json
+  C02-Lesson02-...
+  C02-Lesson03-...
+  C02-Lesson04-...
+  C02-Lesson05-...
+  C02-acceptance.md
+  C02-verification.json
+  C02-to-C03-handoff.md
 ```
 
-不上传密钥、`.env`、虚拟环境、Notebook 检查点和编辑器配置。后续课程继续先授课、练习与复核；用户明确要求同步时再发布。
+## 记录约定与项目关系
 
-## Lesson02 本地运行
+用户索要答案按授课约定接受为私下完成确认；原有文件检查、助手参考补充、运行验证分别记录，不把参考代码通过当作独立掌握证据。旧逐课交接保留各自日期的历史状态，最新接续见模块交接。
 
-```bash
-conda activate fde
-cd /Users/jace/transformer-learning
-python C02/lesson02.py
-```
+本仓库用于 Transformer 学习；C01 服务与后端实践仍在 [agent-learn](https://github.com/15016623369a-spe/agent-learn)。主项目为“企业知识驱动的办公分析与报告 Agent”，后续会学习真实推理、工具、SQL、RAG、Agent、持久化、审批恢复与部署。
 
-本课包含单头注意力、作业参考补充和有意触发的错误实验。正常流程通过 15 项检查，并额外与 PyTorch 原生 Attention 做两组对照；[验证记录](docs/C02-Lesson02-verification.json) 区分正常结果与预期错误。本课代码、知识点、作业答案与交接集中保存在本仓库。
-
-
-## Lesson03 运行与重点
-
-```bash
-conda activate fde
-cd /Users/jace/transformer-learning
-python C02/lesson03.py
-python C02/exercise/lesson03exercise.py
-```
-
-优先复习 [Lesson03 重点讲义](docs/C02-Lesson03-notes.md) 中的五个重点：特征维等宽拆分、先投影再拆头、拆分与合并的数值顺序、每头缩放与 Softmax 轴、Mask 的 head 广播维。讲义包含完整教师代码和易错点。
-
-原有课堂与练习均执行通过；练习保留学习注释，追加明确标识的第四题参考补充。三组配置（课堂 H=2、练习 H=3 和 H=4）的输出及逐头权重分别与同参数 PyTorch 原生多头注意力对照一致，详见 [验证记录](docs/C02-Lesson03-verification.json)。
-
-
-## Lesson04 运行与重点
-
-```bash
-conda activate fde
-cd /Users/jace/transformer-learning
-python C02/lesson04.py
-python C02/exercise/lesson04exercise.py
-```
-
-优先复习 [Lesson04 重点讲义](docs/C02-Lesson04-notes.md)：FFN 的 D→D_ff→D、激活函数、两次残差的原输入旁路、LayerNorm 的末尾特征统计，以及 Pre-Norm 的计算顺序。讲义包含完整教师代码和易错点。
-
-课堂脚本原有 7 项检查通过，保留原内容；新练习明确标记为助手参考补充，包含 LayerNorm 手算、两种 FFN 宽度和两个错误案例。课堂与两种宽度共三组输出均与同参数 PyTorch 原生 Pre-Norm 层对照一致，详见 [验证记录](docs/C02-Lesson04-verification.json)。Lesson04 文件复核完成，C02 的整体实验与验收仍待后续完成。
+后续课程先在聊天完整讲知识点、教师代码、解释和易错点，最后统一布置作业；用户明确要求同步后再发布。密钥、.env、环境、缓存与编辑器配置由 .gitignore 排除。

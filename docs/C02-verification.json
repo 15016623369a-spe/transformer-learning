@@ -1,0 +1,336 @@
+{
+  "module": "C02 Transformer foundations",
+  "date": "2026-10-22",
+  "timezone": "Asia/Shanghai",
+  "result": "passed",
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.14.0",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "device": "cpu"
+  },
+  "notebook": {
+    "method": "fresh Jupyter kernel; all cells in order; allow_errors=False; existing interpreter explicitly selected",
+    "persisted_code_cells_executed": 13,
+    "temporary_probe_cells": 1,
+    "unhandled_cell_errors": 0,
+    "python_executable": "/Users/jace/miniforge3/envs/fde/bin/python",
+    "python": "3.11.16",
+    "torch": "2.14.0",
+    "checks": {
+      "main_dimensions": true,
+      "input_ids": true,
+      "input_shape": true,
+      "embedding_shape": true,
+      "output_shape": true,
+      "valid_mask": true,
+      "lookup": true,
+      "pad_vectors_zero": true,
+      "same_token_different_positions": true,
+      "unknown_id_and_validity": true,
+      "shape_exercise": true,
+      "case_a_expected_error": true,
+      "case_a_fixed": true,
+      "case_b_expected_error": true,
+      "case_b_fixed": true
+    },
+    "expected_errors": {
+      "A": {
+        "type": "RuntimeError",
+        "message": "Expected tensor for argument #1 'indices' to have one of the following scalar types: Long, Int; but got torch.FloatTensor instead (while checking arguments for embedding)"
+      },
+      "B": {
+        "type": "IndexError",
+        "message": "index out of range in self"
+      }
+    }
+  },
+  "python_scripts": {
+    "C02/lesson02.py": "passed; expected errors are caught by the lesson",
+    "C02/lesson03.py": "passed; expected errors are caught by the lesson",
+    "C02/exercise/lesson03exercise.py": "passed; expected errors are caught by the lesson",
+    "C02/lesson04.py": "passed; expected errors are caught by the lesson",
+    "C02/exercise/lesson04exercise.py": "passed; expected errors are caught by the lesson",
+    "C02/lesson05.py": "passed; expected errors are caught by the lesson",
+    "C02/exercise/lesson05exercise.py": "passed; expected errors are caught by the lesson"
+  },
+  "source_sha256": {
+    "C02/lesson01.ipynb": "67596b19c7655cd9365c7565bc176e28fb79599ca4a5ef115e463ab94bf85ddf",
+    "C02/lesson02.py": "681062282c5c4119b7c9ff473a9de0f9645063c1f987f6ea6427032fbf0ef7d6",
+    "C02/lesson03.py": "cdd006af6541905667f6d334f39ddee614083420279023a034ccb37f469f920a",
+    "C02/exercise/lesson03exercise.py": "d35d46de27aef0d58b9defeb60969721d1386decf098432a15f4da3ac5fdb204",
+    "C02/lesson04.py": "67d3d12c2540653427d04eb95b40d2b68a0d5a6d5e02a23e53cdc64c6dee55ca",
+    "C02/exercise/lesson04exercise.py": "00a2855cf61d1f3edfcb3744dd3b538ed87493a51208e1959efd94a8074fd128",
+    "C02/lesson05.py": "544ecad79f07af571728e351135f733d5708a492177b80f14e93992577906804",
+    "C02/exercise/lesson05exercise.py": "557df2f20686cfd101ae1b0012e23fcccc43a28b8f42960b305f663dcafff064",
+    "C02/verify.py": "8c360495dd2b04e39dd046f322cdae2c987a425bff3c1c30d16bfcd00ee66077"
+  },
+  "lesson02_checks": {
+    "teacher_output_shape": true,
+    "teacher_weights_normalized": true,
+    "teacher_forbidden_zero": true,
+    "teacher_output_finite": true,
+    "manual_second_row": true,
+    "homework_input_ids": true,
+    "homework_feature_shapes": true,
+    "homework_output_shape": true,
+    "homework_weights_normalized": true,
+    "homework_forbidden_zero": true,
+    "homework_output_finite": true,
+    "homework_pad_output_zero": true,
+    "zero_fill_error_reproduced": true,
+    "wrong_axis_error_reproduced": true,
+    "all_pad_error_and_guard": true
+  },
+  "lesson02_expected_errors": {
+    "zero_fill_forbidden_max": 0.27639058232307434,
+    "wrong_axis_all_finite": false,
+    "all_pad_direct_softmax_all_nan": true,
+    "all_pad_guard_triggered": true
+  },
+  "lesson03_homework_checks": {
+    "3": {
+      "output_shape": true,
+      "row_sums_one": true,
+      "forbidden_weights_zero": true,
+      "pad_query_output_zero": true,
+      "weights_finite": true,
+      "output_finite": true
+    },
+    "4": {
+      "output_shape": true,
+      "row_sums_one": true,
+      "forbidden_weights_zero": true,
+      "pad_query_output_zero": true,
+      "weights_finite": true,
+      "output_finite": true
+    }
+  },
+  "lesson03_debug_checks": {
+    "invalid_head_config_rejected": true,
+    "wrong_merge_shape_same": true,
+    "wrong_merge_values_differ": true,
+    "correct_merge_restores_values": true
+  },
+  "lesson04_checks": {
+    "shape_preserved": true,
+    "ffn_expanded": true,
+    "manual_layernorm_matches": true,
+    "attention_rows_sum_one": true,
+    "forbidden_weights_zero": true,
+    "pad_output_zero": true,
+    "normal_values_finite": true
+  },
+  "lesson04_homework_checks": {
+    "24": {
+      "residual_shapes": true,
+      "ffn_hidden_shape": true,
+      "output_shape": true,
+      "attention_rows_sum_one": true,
+      "forbidden_weights_zero": true,
+      "pad_output_zero": true,
+      "normal_values_finite": true
+    },
+    "48": {
+      "residual_shapes": true,
+      "ffn_hidden_shape": true,
+      "output_shape": true,
+      "attention_rows_sum_one": true,
+      "forbidden_weights_zero": true,
+      "pad_output_zero": true,
+      "normal_values_finite": true
+    }
+  },
+  "layernorm_manual": {
+    "mean": 2.0,
+    "variance": 2.0,
+    "output": [
+      -1.4142100811004639,
+      0.0,
+      0.0,
+      1.4142100811004639
+    ],
+    "matches": true
+  },
+  "lesson04_expected_errors": {
+    "A": "The size of tensor a (8) must match the size of tensor b (16) at non-singleton dimension 2",
+    "B": "Given normalized_shape=[4], expected input with shape [*, 4], but got input of size[2, 4, 8]"
+  },
+  "lesson05_teacher_deltas": {
+    "causal_delta": 0.0,
+    "open_delta": 0.08764767646789551,
+    "pad_delta": 0.0,
+    "unmasked_delta": 0.14241230487823486
+  },
+  "lesson05_homework_shapes": {
+    "input_ids": [
+      3,
+      4
+    ],
+    "h": [
+      3,
+      4,
+      12
+    ],
+    "query": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "weights": [
+      3,
+      3,
+      4,
+      4
+    ],
+    "allowed": [
+      3,
+      1,
+      4,
+      4
+    ],
+    "after_attn": [
+      3,
+      4,
+      12
+    ],
+    "ff_hidden": [
+      3,
+      4,
+      24
+    ],
+    "output": [
+      3,
+      4,
+      12
+    ]
+  },
+  "lesson05_homework_checks": {
+    "output_shape": true,
+    "ffn_hidden_shape": true,
+    "weights_rows_sum_one": true,
+    "forbidden_weights_zero": true,
+    "pad_output_zero": true,
+    "normal_values_finite": true
+  },
+  "lesson05_homework_deltas": {
+    "causal_prefix_max_delta": 0.0,
+    "without_causal_prefix_max_delta": 0.08238822221755981,
+    "pad_mask_valid_output_max_delta": 0.0,
+    "without_pad_mask_valid_output_max_delta": 0.1807783842086792
+  },
+  "lesson05_debug_checks": {
+    "A_alias_is_same_object": true,
+    "A_original_baseline_was_changed": true,
+    "A_clone_fix_preserves_baseline": true,
+    "B_expected_error": "存在没有可读 Key 的 Query",
+    "B_correct_mask_fix_passed": true,
+    "independent_cases_preserve_original_h": true
+  },
+  "native_reference_comparisons": {
+    "lesson02_teacher": {
+      "output_matches": true,
+      "shape": [
+        2,
+        4,
+        3
+      ]
+    },
+    "lesson02_homework": {
+      "output_matches": true,
+      "shape": [
+        3,
+        3,
+        4
+      ]
+    },
+    "lesson03_teacher_H2": {
+      "output_matches": true,
+      "per_head_weights_match": true,
+      "split_merge_roundtrip": true,
+      "shape": [
+        2,
+        4,
+        8
+      ]
+    },
+    "lesson03_homework_H3": {
+      "output_matches": true,
+      "per_head_weights_match": true,
+      "split_merge_roundtrip": true,
+      "shape": [
+        3,
+        3,
+        12
+      ]
+    },
+    "lesson03_homework_H4": {
+      "output_matches": true,
+      "per_head_weights_match": true,
+      "split_merge_roundtrip": true,
+      "shape": [
+        3,
+        3,
+        12
+      ]
+    },
+    "lesson04_teacher_Dff16": {
+      "output_matches": true,
+      "shape": [
+        2,
+        4,
+        8
+      ]
+    },
+    "lesson04_homework_Dff24": {
+      "output_matches": true,
+      "shape": [
+        3,
+        3,
+        12
+      ]
+    },
+    "lesson04_homework_Dff48": {
+      "output_matches": true,
+      "shape": [
+        3,
+        3,
+        12
+      ]
+    },
+    "lesson05_teacher": {
+      "output_matches": true,
+      "shape": [
+        2,
+        4,
+        8
+      ]
+    },
+    "lesson05_homework": {
+      "output_matches": true,
+      "shape": [
+        3,
+        4,
+        12
+      ]
+    }
+  },
+  "native_reference_case_count": 10,
+  "reference_conditions": "Same parameters, CPU, dropout=0; GELU and norm_first=True for Blocks; manual attention projections have no bias, reference attention biases set to zero; PAD outputs cleared on both sides. Boolean masks are converted for each API.",
+  "comparison_tolerance": {
+    "atol": 1e-06,
+    "rtol": 1e-05
+  },
+  "additional_behavior_checks": {
+    "causal_prefix_isolated": true,
+    "ffn_positionwise": true,
+    "zero_branches_preserve_residual": true,
+    "all_masked_rows_rejected": true
+  },
+  "scope": "Current fixed teaching examples, saved learning files and labeled assistant reference supplements. User requested answers as private completion confirmation. Passing reference code is not independent proof of learner mastery or language understanding.",
+  "training_performed": false,
+  "dependencies_changed": false,
+  "paid_model_api_calls": 0
+}
