@@ -1,0 +1,119 @@
+{
+  "lesson": "C02 Lesson04",
+  "date": "2026-10-22",
+  "timezone": "Asia/Shanghai",
+  "environment": {
+    "python": "3.11.16",
+    "torch": "2.14.0",
+    "device": "cpu"
+  },
+  "original_execution": {
+    "C02/lesson04.py": "passed before edits; 7 original checks passed"
+  },
+  "source_sha256_before": {
+    "C02/lesson04.py": "67d3d12c2540653427d04eb95b40d2b68a0d5a6d5e02a23e53cdc64c6dee55ca"
+  },
+  "source_sha256_after": {
+    "C02/lesson04.py": "67d3d12c2540653427d04eb95b40d2b68a0d5a6d5e02a23e53cdc64c6dee55ca",
+    "C02/exercise/lesson04exercise.py": "00a2855cf61d1f3edfcb3744dd3b538ed87493a51208e1959efd94a8074fd128"
+  },
+  "teacher_core_unchanged": true,
+  "teacher_checks": {
+    "shape_preserved": true,
+    "ffn_expanded": true,
+    "manual_layernorm_matches": true,
+    "attention_rows_sum_one": true,
+    "forbidden_weights_zero": true,
+    "pad_output_zero": true,
+    "normal_values_finite": true
+  },
+  "layernorm_exercise": {
+    "mean": 2.0,
+    "variance": 2.0,
+    "output": [
+      -1.4142100811004639,
+      0.0,
+      0.0,
+      1.4142100811004639
+    ],
+    "matches": true
+  },
+  "exercise_checks": {
+    "24": {
+      "residual_shapes": true,
+      "ffn_hidden_shape": true,
+      "output_shape": true,
+      "attention_rows_sum_one": true,
+      "forbidden_weights_zero": true,
+      "pad_output_zero": true,
+      "normal_values_finite": true
+    },
+    "48": {
+      "residual_shapes": true,
+      "ffn_hidden_shape": true,
+      "output_shape": true,
+      "attention_rows_sum_one": true,
+      "forbidden_weights_zero": true,
+      "pad_output_zero": true,
+      "normal_values_finite": true
+    }
+  },
+  "native_reference": "torch.nn.TransformerEncoderLayer with identical parameters, norm_first=True, batch_first=True, activation=gelu, dropout=0; attention biases zero to match bias-free manual projections; PAD output cleared on both sides",
+  "native_reference_comparisons": {
+    "teacher_D8_H2_Dff16": {
+      "output_matches": true,
+      "output_shape": [
+        2,
+        4,
+        8
+      ]
+    },
+    "exercise_D12_H3_Dff24": {
+      "output_matches": true,
+      "output_shape": [
+        3,
+        3,
+        12
+      ]
+    },
+    "exercise_D12_H3_Dff48": {
+      "output_matches": true,
+      "output_shape": [
+        3,
+        3,
+        12
+      ]
+    }
+  },
+  "comparison_tolerance": {
+    "atol": 1e-06,
+    "rtol": 1e-05
+  },
+  "behavior_checks": {
+    "future_token_change_preserves_prefix": true,
+    "future_token_change_affects_changed_position": true,
+    "ffn_does_not_mix_positions": true,
+    "zero_branches_preserve_raw_residual_input": true,
+    "all_masked_rows_rejected_before_softmax": true,
+    "same_inputs_and_attention_parameters_across_ffn_widths": true
+  },
+  "fourth_exercise_expected_errors": {
+    "A": "The size of tensor a (8) must match the size of tensor b (16) at non-singleton dimension 2",
+    "B": "Given normalized_shape=[4], expected input with shape [*, 4], but got input of size[2, 4, 8]"
+  },
+  "fourth_exercise_fixes_passed": true,
+  "documentation_checks": {
+    "full_teacher_code_matches_saved_file": true,
+    "relative_links_checked": 35,
+    "code_fences_paired": true
+  },
+  "completion_evidence": "The user requested Lesson04 answers; accepted as private completion per the teaching agreement. The saved classroom file was checked without changes. No separate saved Lesson04 homework file was found; the new exercise and documentation are labeled assistant reference material and do not independently prove learner mastery. Overall C02 experiments and acceptance remain pending.",
+  "publication_request": {
+    "date": "2026-10-22",
+    "repository": "https://github.com/15016623369a-spe/transformer-learning",
+    "user_authorized": true
+  },
+  "training_performed": false,
+  "paid_model_api_calls": 0,
+  "dependencies_changed": false
+}
